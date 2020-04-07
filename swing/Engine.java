@@ -9,7 +9,7 @@ public class Engine {
 		GradeService gradeService = new GradeService();
 		MemberBean[] members = new MemberBean[3];
 		while (true) {
-			System.out.println("0. 종료 1.성적표입력 2. 성적표출력  3.비교하기  4.회원가입");
+			System.out.println("0. 종료 1.성적표입력 2. 성적표출력  3.비교하기  4.회원가입  5.회원표출력");
 			switch (scanner.nextInt()) {
 			case 0:System.out.println("종료");return;
 			case 1:System.out.println("성적표");
@@ -30,7 +30,9 @@ public class Engine {
 				}
 				break;
 			case 3:
+				GradeBean[] grades1 = gradeService.getGrades();
 				System.out.println("총점별로 1,2,3등 이름 나열하기");
+				System.out.println(score(grades1));
 				break;
 			case 4:
 				for(int i=0;i<3;i++) {
@@ -61,5 +63,37 @@ public class Engine {
 		member.setAge(scanner.nextInt());
 		return member;
 	}
+	
+	public static String score(GradeBean[] grades) {
+		GradeBean a = grades[0];
+		GradeBean b = grades[1];
+		GradeBean c = grades[2];
+		String rank = "";
+		// ABC O, ACB O, BACO, BCAO, CAB O, CBA O
+		//System.out.println(a.allsum()+" "+b.allsum()+" "+c.allsum());
+		if (a.allsum() > b.allsum()) {
+			if(a.allsum()>c.allsum()) {
+				if(b.allsum()>c.allsum()) {
+					rank =a.getName()+b.getName()+c.getName();
+				} else {
+					rank =a.getName()+c.getName()+b.getName();
+				}
+			}
+		} else if(a.allsum()<c.allsum()) {
+			rank =c.getName()+a.getName()+b.getName(); 
+		}
+		if (a.allsum()<b.allsum()) {
+			if(a.allsum()>c.allsum()) {
+				rank =b.getName()+a.getName()+c.getName(); 
+			}
+		} else if(a.allsum()<c.allsum()) {
+			if(a.allsum()<c.allsum()) {
+				rank=b.getName()+c.getName()+a.getName(); 
+			} else {
+				rank=c.getName()+b.getName()+a.getName();
+			}
+		}
+		return rank;
+		}
 
 }
