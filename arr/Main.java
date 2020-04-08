@@ -13,12 +13,13 @@ public class Main {
 			for(int i=0; i<3;i++) {
 				service.add(new CardBean(scanner.next()
 						,scanner.nextInt()));
+				System.out.println((i+1)+"번째 입력 끝");
 			}
 			break;
 			case 2:
 				CardBean[] cards = service.getCards();
 				for(int i=0;i<3;i++) {
-					System.out.println(String.format("카드모양 %s 카드번호%d",
+					System.out.println(String.format("카드모양 %s \t 카드번호 %d",
 							cards[i].getKind(),cards[i].getNumber()));
 					
 				}
@@ -33,8 +34,11 @@ public class Main {
 			break;
 			case 4:
 				KBean[] card1 = service1.getCards(); 
-				Kbean = card1[0];
-				System.out.println(String.format("카드모양 %s 카드번호%d", ));
+				for(int i=0;i<3;i++) {
+					System.out.println(String.format("카드모양 %s\t카드번호%d",
+							card1[i].getShape(),card1[i].getNumber()));	
+				}
+				
 			break;
 			}
 		}
