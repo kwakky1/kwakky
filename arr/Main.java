@@ -33,7 +33,8 @@ public class Main {
 			break;
 			case 4:
 				KBean[] card1 = service1.getCards(); 
-				System.out.println(String.format("카드모양 %s 카드번호%d", card));
+				Kbean = card1[0];
+				System.out.println(String.format("카드모양 %s 카드번호%d", ));
 			break;
 			}
 		}
