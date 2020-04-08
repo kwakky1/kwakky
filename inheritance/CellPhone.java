@@ -5,7 +5,7 @@ public class CellPhone extends Phone {
 	private String move;
 	public CellPhone(String phoneNumber, String name, String company,boolean portable) {
 		super(phoneNumber, name, company);
-		this.portable = portable;
+		setPortable(portable);
 	}
 	public boolean isPortable() {
 		return portable;
