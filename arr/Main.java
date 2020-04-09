@@ -1,22 +1,27 @@
 package com.jse.arr;
 import java.util.Scanner;
+import com.jse.util.Constants;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import javax.smartcardio.Card;
+import javax.swing.JOptionPane;
+
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		CardService service = new CardService();
 		KService service1 = new KService();
 		while(true) {
-			System.out.println("0.나가기 1.Card3장 받기 2.출력");
-			switch(scanner.nextInt()) {
-			case 0: return;
-			case 1: System.out.println("Card 3장 받기 모양, 숫자");
+			switch(JOptionPane.showInputDialog(Constants.MENU2)) {
+			case "0": return;
+			case "1": JOptionPane.showInputDialog(Constants.CARD_MENU);
+			
 			for(int i=0; i<3;i++) {
-				service.add(new CardBean(scanner.next()
-						,scanner.nextInt()));
-				System.out.println((i+1)+"번째 입력 끝");
+				String[] values = JOptionPane.showInputDialog(Constants.CARD_MENU).split(",");
+				service.add(new CardBean(values[0], values[1]));
 			}
 			break;
-			case 2:
+			case "2":
 				CardBean[] cards = service.getCards();
 				for(int i=0;i<3;i++) {
 					System.out.println(String.format("카드모양 %s \t 카드번호 %d",
@@ -24,15 +29,13 @@ public class Main {
 					
 				}
 			break;
-			case 3: System.out.println("카드3장받기 모양, 숫자");
+			case "3": System.out.println("카드3장받기 모양, 숫자");
 			for(int i=0; i<3;i++) {
 				service1.add1(new KBean(scanner.next(),
 						scanner.nextInt()));
 			}
-				
-					
 			break;
-			case 4:
+			case "4":
 				KBean[] card1 = service1.getCards(); 
 				for(int i=0;i<3;i++) {
 					System.out.println(String.format("카드모양 %s\t카드번호%d",

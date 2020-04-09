@@ -24,4 +24,9 @@ public class CellPhone extends Phone {
 	public void setMove(String move) {
 		this.move = move;
 	}
+	@Override
+	public String toString() {
+		return "CellPhone [portable=" + portable + ", move=" + move + "]";
+	}
+	
 }

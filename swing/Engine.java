@@ -9,7 +9,7 @@ public class Engine {
 		GradeService gradeService = new GradeService();
 		MemberBean[] members = new MemberBean[3];
 		while (true) {
-			System.out.println("0. 종료 1.성적표입력 2. 성적표출력  3.비교하기  4.회원가입  5.회원표출력");
+			System.out.println("");
 			switch (scanner.nextInt()) {
 			case 0:System.out.println("종료");return;
 			case 1:System.out.println("성적표");

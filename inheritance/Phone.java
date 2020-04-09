@@ -27,4 +27,10 @@ public class Phone {
 	public String getCompany() {
 		return company;
 	}
+	@Override
+	public String toString() {
+		return "Phone : phoneNumber=" + phoneNumber + ", name=" + name + ", company=" + company;
+	}
+
+	
 }
