@@ -1,4 +1,4 @@
-package com.jse.app;
+package com.jse.game;
 
 public class Dice {
 		private String first;

@@ -1,4 +1,4 @@
-package com.jse.app;
+package com.jse.member;
 
 public class Member { // 필드
 	private String id; // 인스턴스 변수, reference (참조주소)

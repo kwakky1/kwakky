@@ -10,6 +10,8 @@ public class Constants {
 	
 	public final static String MENU2="0.나가기 1.Card3장 받기 2.출력";
 	public final static String CARD_MENU="Card 3장 받기 모양, 숫자";
+	public final static String GRADE_MENU="0 종료 1입력 2출력";
+	public final static String GRADE_INPUT="이름,국어,영어,수학 입력";
 	
 }
 

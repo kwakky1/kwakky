@@ -1,7 +1,11 @@
-package com.jse.app;
+package com.jse.game;
 import java.util.Scanner;
+
+import com.jse.member.Member;
+import com.jse.util.Calculator;
+
 import java.util.Random;
-public class Engine {
+public class GameController {
 	public static void main(String[] args) {
 		// public static String test; declaring  멤버변수
 		Scanner scanner = new Scanner(System.in); // scanner = 인스턴스를 만들었다.
