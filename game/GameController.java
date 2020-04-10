@@ -30,14 +30,14 @@ public class GameController {
 			case 1: System.out.println("회원가입"); 
 				System.out.println("아이디입력");
 				String id = scanner.next();
-				member.setId(id);
+				member.setUserid(id);
 				
 			break;
 			case 2: 
 				System.out.println("로그인");
 				System.out.println("아이디입력");
 				String id2 = scanner.next();
-				String returnid = member.getId();
+				String returnid = member.getUserid();
 				System.out.println("로그인된 아이디 : " + returnid);
 				if(id2.equals(returnid)) {
 					System.out.println("로그인 성공");	
