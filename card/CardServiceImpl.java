@@ -13,6 +13,12 @@ public class CardServiceImpl {
 	public Card[] getCards() {
 		return cards;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public void add(Card card) {
 		cards[count]=card;
 		count++;

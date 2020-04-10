@@ -22,12 +22,11 @@ public class CardController {
 			}
 			break;
 			case "2":
-				Card[] cards = cardService.getCards();
-				String message="";
-				for(int i=0;i<3;i++) {
-					message += cards[i].toString();
-					
-				}
+				JOptionPane.showInputDialog(null, cardService);
+			break;
+			case "3":
+				
+				
 			break;
 			}
 		}
