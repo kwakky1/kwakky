@@ -77,7 +77,13 @@ public class JoinView extends JFrame implements ActionListener {
 					jTextFields[3].getText()).split("/"); 
 		
 			String[] names = data[0].split(",");
+			String[] ids = data[1].split(",");
+			String[] pws = data[2].split(",");
+			String[] ssns = data[3].split(",");
+			memberService.add(new Member(names[0],ids[0],pws[0],ssns[0]));
+			
 			// 각 스플릿을 통해 담는다.
+			
 			
 			Member[] members = memberService.getMemebers();
 			for(int i=0;i < members.length; i++) {
