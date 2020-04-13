@@ -96,7 +96,7 @@ public class JoinView extends JFrame implements ActionListener{
 		}else if(e.getSource() == listButton) {
 			JOptionPane.showMessageDialog(this, "클릭!");
 			Member[] members = memberService.getMemebers();
-			for(int i=0;i<5;i++){
+			for(int i=0;i<members.length;i++){
 				System.out.println(members[i]);
 			}	
 			
