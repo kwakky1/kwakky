@@ -120,17 +120,15 @@ public class MemberView extends JFrame implements ActionListener {
 			}
 			jTextArea.setText(add);
 		}else if(e.getSource() == loginbutton) {
-			JOptionPane.showMessageDialog(this,"로그인"+ jTextFields[1].getText());
 			Member member= new Member();
 			member.setUserid(jTextFields[1].getText());
 			member.setPasswd(jTextFields[2].getText());
-			if(memberService.login(member).getPasswd().equals(jTextFields[2].getText())) {
-				JOptionPane.showMessageDialog(this,"로그인성공");
-				
-				jTextArea.setText(memberService.login(member).toString());
+			Member returnMember = memberService.login(member); 
+			if(returnMember !=null) { // 처음에는 패스워드로 비교했음
+				jTextArea.setText(returnMember.toString());
 			} else { 
-				JOptionPane.showMessageDialog(this,"로그인실패");
-			}
+				jTextArea.setText("로그인실패");			
+				}
 			
 			}
 		

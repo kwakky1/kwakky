@@ -21,12 +21,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public Member login(Member member) {
-		Member log = new Member();
+		Member log = null;
 		for(int i=0;i<members.length;i++) {
 			if(member.getUserid().equals(members[i].getUserid())
 					&& member.getPasswd().equals(members[i].getPasswd())){
+				log = new Member();
 				log = members[i];
-				
+				break;
 			} 
 		}
 		return log;
