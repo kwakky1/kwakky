@@ -10,33 +10,35 @@ public class GradeServiceImpl implements GradeService{
 		count = 0;
 	}
 	@Override
-	public void setGrades(Grade[] grades) {
-		this.grades = grades;
-	}
-	@Override
-	public Grade[] getGrades() {
-		return grades;
-	}
-	@Override
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
-	@Override
 	public void add(Grade grade) {
 		grades[count] = grade;
 		count++;
 	}
+	
 	@Override
-	public int allsum(Grade grade) {
+	public Grade[] list() {
+		return grades;
+	}
+	
+	@Override
+	public Grade detail(Grade grade) {
+		return grade;
+	}
+	
+	@Override
+	public int count() {
+		return count;
+	}
+	
+	@Override
+	public int total(Grade grade) {
 		// TODO Auto-generated method stub
 		return grade.getKorean() +grade.getEnglish()+grade.getMath();
 	}
+	
 	@Override
 	public int average(Grade grade) {
-		return allsum( grade) / 3;
+		return total( grade) / 3;
 	}
 	@Override
 	public String record(Grade grade) {
@@ -61,24 +63,13 @@ public class GradeServiceImpl implements GradeService{
 		return result;
 	}
 
-	@Override
-	public String printGrades(Grade grade) {
-		String result = "";
-		Grade[] grades = getGrades();
-		for(int i=0;i<3;i++) {
-			result += String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s]\n",
-					grades[i].getName(), 
-					allsum(grades[i]), average(grades[i]),record(grades[i]));
-		}
-		return result;
-	}
 		
 	@Override
 	public String ranking() {
-		grades = getGrades();
-		int a = allsum(grades[0]);
-		int y = allsum(grades[1]);
-		int z = allsum(grades[2]);
+		grades = list();
+		int a = total(grades[0]);
+		int y = total(grades[1]);
+		int z = total(grades[2]);
 		if (a > y && a>z) {
 			if (y > z ) {
 				System.out.println("1등 :" + grades[0].getName() + " 2등:" + grades[1].getName() + " 3등:"
@@ -105,6 +96,15 @@ public class GradeServiceImpl implements GradeService{
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public void update(Grade grade) {
+		
+	}
+	@Override
+	public void delete(Grade grade) {
+		
 	}
 
 

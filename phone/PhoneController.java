@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class PhoneController {
 	
 	public static void main(String[] args) {
-		PhoneService phoneservice = new PhoneService();
+		PhoneServiceImpl phoneservice = new PhoneServiceImpl();
 		String message;
 		while (true) {
 			System.out.println();
@@ -20,7 +20,7 @@ public class PhoneController {
 				}
 				break;
 			case "2":
-				Phone[] phones = phoneservice.getPhones();
+				Phone[] phones = phoneservice.list();
 				message = "";
 				for (int i = 0; i < 3; i++) {
 					message += phones[i].toString()+"\t";

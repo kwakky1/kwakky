@@ -24,10 +24,10 @@ public class GradeController {
 					gradeService.add(grade);
 			}
 			break;
-			case "2": JOptionPane.showInputDialog(null, gradeService.printGrades(grade));
+			case "2": JOptionPane.showInputDialog(null, gradeService.list());
 				break;
 			case "3":
-				Grade[] grades1 = gradeService.getGrades();
+				Grade[] grades1 = gradeService.list();
 				System.out.println("총점별로 1,2,3등 이름 나열하기");
 				break;
 			}

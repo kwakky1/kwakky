@@ -1,26 +1,41 @@
 package com.jse.card;
 
-public class CardServiceImpl {
+public class CardServiceImpl implements CardService {
 	private Card[] cards;
 	private int count;
 	public CardServiceImpl() {
 		cards = new Card[3];
 		count = 0;
 	}
-	public void setCards(Card[] cards) {
-		this.cards = cards;
-	}
-	public Card[] getCards() {
-		return cards;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
+	@Override
 	public void add(Card card) {
-		cards[count]=card;
+		cards[count] = card;
 		count++;
 	}
+	@Override
+	public Card[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Card detail(Card card) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return count;
+	}
+	@Override
+	public Card update(Card card) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Card delete(Card card) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

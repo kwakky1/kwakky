@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Savepoint;
 public class MemberView extends JFrame implements ActionListener {
-	JButton savebutton,loginbutton,listbutton;
+	JButton savebutton,loginbutton,listbutton,detailbutton,namebutton,genderbutton,countbutton,updatebutton,deletebutton;
 	JTextField namefield, useridfield, passwordfield,ssnlabelfield;
 	JLabel label,namelabel,useridlabel,passwordlabel,ssnlabel;
 	JLabel[] labels;
@@ -43,13 +43,31 @@ public class MemberView extends JFrame implements ActionListener {
 		savebutton = new JButton("저장");
 		listbutton = new JButton("목록");
 		loginbutton = new JButton("로그인");
+		detailbutton = new JButton("detail");
+		namebutton = new JButton("name");
+		genderbutton = new JButton("gender");
+		countbutton = new JButton("count");
+		updatebutton = new JButton("update");
+		deletebutton = new JButton("delete");
 		
 		savebutton.addActionListener(this);
 		listbutton.addActionListener(this);
 		loginbutton.addActionListener(this);
+		detailbutton.addActionListener(this);
+		namebutton.addActionListener(this);
+		genderbutton.addActionListener(this);
+		countbutton.addActionListener(this);
+		updatebutton.addActionListener(this);
+		deletebutton.addActionListener(this);
 		this.add(savebutton);
 		this.add(listbutton);
 		this.add(loginbutton);
+		this.add(detailbutton);
+		this.add(namebutton);
+		this.add(genderbutton);
+		this.add(countbutton);
+		this.add(updatebutton);
+		this.add(deletebutton);
 		this.add(panel);
 		
 		labels[0].setBounds(69, 113, 69, 20);
@@ -64,16 +82,22 @@ public class MemberView extends JFrame implements ActionListener {
 		jTextFields[3].setBounds(159, 253, 186, 35);
 		jTextFields[4].setBounds(159, 300, 186, 35);
 		jTextArea.setBounds(450, 113, 250, 350);
-		savebutton.setBounds(159, 363, 70, 29);
-		listbutton.setBounds(350, 363, 70, 29);
+		savebutton.setBounds(159, 363, 90, 29);
 		loginbutton.setBounds(250, 363, 90, 29);
+		listbutton.setBounds(350, 363, 90, 29);
+		detailbutton.setBounds(159, 400, 90, 29);
+		namebutton.setBounds(250, 400, 90, 29);
+		genderbutton.setBounds(350, 400, 90, 29);
+		countbutton.setBounds(159, 450, 90, 29);
+		updatebutton.setBounds(250, 450, 90, 29);
+		deletebutton.setBounds(350, 450, 90, 29);
 		this.setVisible(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == savebutton ) {
-			jTextFields[0].setText("홍길동,유관순,이순신,신사임당,이도");
+			jTextFields[0].setText("홍길동,홍길동,이순신,신사임당,이도");
 			jTextFields[1].setText("hong,you,lee,shin,do");
 			jTextFields[2].setText("1,1,1,1,1");
 			jTextFields[3].setText("900101-1,910120-2,980120-1,930120-1,000103-3");
@@ -112,7 +136,7 @@ public class MemberView extends JFrame implements ActionListener {
 			}
 			
 		}else if(e.getSource() == listbutton) {
-			Member[] members = memberService.getMemebers();
+			Member[] members = memberService.list();
 			String add = "";
 			for(int i=0;i<members.length;i++) {
 				add += members[i]+"\n";
@@ -129,8 +153,26 @@ public class MemberView extends JFrame implements ActionListener {
 			} else { 
 				jTextArea.setText("로그인실패");			
 				}
-			
+			} else if(e.getSource() == detailbutton) {
+				Member detail = memberService.detail(jTextFields[1].getText());
+				if(detail !=null) {
+					jTextArea.setText(detail.toString());
+				} else {
+					jTextArea.setText("아이디 없음");
+				}
+			} else if(e.getSource() == namebutton) {
+				Member[] name = memberService.searchByName(jTextFields[0].getText());
+				String names ="";
+				if(name !=null) {
+					for(int i=0;i<name.length;i++) {
+						names += name[i]+"\n";
+					}
+					jTextArea.setText(names.toString());
+					} else {
+						jTextArea.setText("없음");
+					}
+				
+				
 			}
-		
 		}
 	}
