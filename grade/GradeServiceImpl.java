@@ -22,7 +22,13 @@ public class GradeServiceImpl implements GradeService{
 	
 	@Override
 	public Grade detail(Grade grade) {
-		return grade;
+		Grade returnGrade = new Grade();
+		for(int i=0;i<grades.length;i++) {
+			if(grade == grades[i]) {
+				
+			}
+		}
+		return returnGrade;
 	}
 	
 	@Override

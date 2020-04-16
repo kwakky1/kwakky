@@ -4,6 +4,7 @@ package com.jse.member;
 		public void add(Member member);
 		public Member[] list();
 		public Member[] searchByName(String keyword);
+		public Member[] searchByGender(String gender);
 		public Member detail(String userId);
 		public int count();
 		public int count(String name);

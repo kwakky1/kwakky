@@ -143,6 +143,7 @@ public class MemberView extends JFrame implements ActionListener {
 				jTextFields[i].setText("");
 			}
 			jTextArea.setText(add);
+		
 		}else if(e.getSource() == loginbutton) {
 			Member member= new Member();
 			member.setUserid(jTextFields[1].getText());
@@ -153,13 +154,15 @@ public class MemberView extends JFrame implements ActionListener {
 			} else { 
 				jTextArea.setText("로그인실패");			
 				}
-			} else if(e.getSource() == detailbutton) {
+			
+		} else if(e.getSource() == detailbutton) {
 				Member detail = memberService.detail(jTextFields[1].getText());
 				if(detail !=null) {
 					jTextArea.setText(detail.toString());
 				} else {
 					jTextArea.setText("아이디 없음");
 				}
+			
 			} else if(e.getSource() == namebutton) {
 				Member[] name = memberService.searchByName(jTextFields[0].getText());
 				String names ="";
@@ -171,7 +174,30 @@ public class MemberView extends JFrame implements ActionListener {
 					} else {
 						jTextArea.setText("없음");
 					}
-				
+			
+			} else if(e.getSource() == genderbutton) { 
+//젠더 버튼을 누르면 member[i].ssn에 있는 7번째의 값이 1,3 2,4 5,6인지 확인후 
+//				남성인지 여성인지 외국인인지 확인 
+				memberService.searchByGender(jTextFields[3].toString());
+			
+			} else if(e.getSource() == countbutton) {
+				jTextArea.setText(String.valueOf(memberService.count()));
+			
+			} else if(e.getSource() == updatebutton) {
+				String userid = jTextFields[1].getText();
+				String password = jTextFields[2].getText();
+				Member update = new Member();
+				update.setUserid(userid);
+				update.setPasswd(password);
+				memberService.update(update);
+			
+			}else if(e.getSource() == deletebutton) {
+				String userid = jTextFields[1].getText();
+				String password = jTextFields[2].getText();
+				Member delete = new Member();
+				delete.setUserid(userid);
+				delete.setPasswd(password);
+				memberService.delete(delete);
 				
 			}
 		}
