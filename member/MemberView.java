@@ -100,7 +100,7 @@ public class MemberView extends JFrame implements ActionListener {
 			jTextFields[0].setText("홍길동,홍길동,이순신,신사임당,이도");
 			jTextFields[1].setText("hong,you,lee,shin,do");
 			jTextFields[2].setText("1,1,1,1,1");
-			jTextFields[3].setText("900101-1,910120-2,980120-1,930120-1,000103-3");
+			jTextFields[3].setText("900101-1,910120-5,980120-1,930120-4,000103-3");
 			jTextFields[4].setText("서울,서울,서울,부산,부산");
 			
 //			JOptionPane.showMessageDialog(this,String.format("%s / %s / %s / %s / %s", 
@@ -138,7 +138,7 @@ public class MemberView extends JFrame implements ActionListener {
 		}else if(e.getSource() == listbutton) {
 			Member[] members = memberService.list();
 			String add = "";
-			for(int i=0;i<members.length;i++) {
+			for(int i=0;i<memberService.count();i++) {
 				add += members[i]+"\n";
 				jTextFields[i].setText("");
 			}
@@ -176,19 +176,24 @@ public class MemberView extends JFrame implements ActionListener {
 					}
 			
 			} else if(e.getSource() == genderbutton) { 
-//젠더 버튼을 누르면 member[i].ssn에 있는 7번째의 값이 1,3 2,4 5,6인지 확인후 
-//				남성인지 여성인지 외국인인지 확인 
-				memberService.searchByGender(jTextFields[3].toString());
+				Member[] gender = memberService.searchByGender(jTextFields[3].getText());
+				String genders ="";
+				if(gender !=null) {
+					for(int i=0;i<gender.length;i++) {
+						genders += gender[i]+"\n";
+					}
+					jTextArea.setText(genders.toString());
+					}
 			
 			} else if(e.getSource() == countbutton) {
 				jTextArea.setText(String.valueOf(memberService.count()));
 			
 			} else if(e.getSource() == updatebutton) {
 				String userid = jTextFields[1].getText();
-				String password = jTextFields[2].getText();
+				String newPassword = jTextFields[2].getText();
 				Member update = new Member();
 				update.setUserid(userid);
-				update.setPasswd(password);
+				update.setPasswd(newPassword);
 				memberService.update(update);
 			
 			}else if(e.getSource() == deletebutton) {
